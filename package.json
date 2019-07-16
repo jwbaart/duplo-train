@@ -11,8 +11,14 @@
     "prebuild": "shx rm -rf dist/*"
   },
   "devDependencies": {
+    "@types/node": "^12.6.4",
+    "node-poweredup": "^2.5.1",
     "parcel-bundler": "^1.12.3",
     "shx": "^0.3.2",
-    "typescript": "^3.5.3"
+    "typescript": "^3.5.3",
+    "xpc-connection": "sandeepmistry/node-xpc-connection#26/head"
+  },
+  "resolutions": {
+    "xpc-connection": "sandeepmistry/node-xpc-connection#26/head"
   }
 }

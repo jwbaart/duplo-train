@@ -20,5 +20,8 @@
   },
   "resolutions": {
     "xpc-connection": "sandeepmistry/node-xpc-connection#26/head"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }

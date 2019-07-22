@@ -1,4 +1,4 @@
-import { PoweredUPBrowser } from "./index-browser";
+import { PoweredUPBrowser } from "./poweredUpBrowser";
 
 const pup = new PoweredUPBrowser.PoweredUP();
 
@@ -14,10 +14,11 @@ pup.on("discover", async hub => {
 
   renderHub(hub);
 
-  doSomething(hub);
+  hub.playSound(hub, PoweredUPBrowser.Consts.DuploTrainBaseSound.BRAKE);
 });
 
 const scan = function() {
+  //   if (PoweredUPBrowser.isWebBluetooth) {
   if (PoweredUPBrowser.isWebBluetooth) {
     console.log(`start scanning`);
     pup.scan(); // Start scanning for hubs
@@ -37,17 +38,6 @@ const renderHub = function(hub) {
     hub.uuid
   )}');">Disconnect</a></td>`;
   document.getElementById("hubs").appendChild(element);
-};
-
-const doSomething = async (hub) => {
-  console.log("Running motor B at speed 75");
-  hub.setMotorSpeed("B", 75); // Start a motor attached to port B to run a 3/4 speed (75) indefinitely
-  console.log("Running motor A at speed 100 for 2 seconds");
-  await hub.setMotorSpeed("A", 100, 2000); // Run a motor attached to port A for 2 seconds at maximum speed (100) then stop
-  await hub.sleep(1000); // Do nothing for 1 second
-  console.log("Running motor A at speed -50 for 1 seconds");
-  await hub.setMotorSpeed("A", -50, 1000); // Run a motor attached to port A for 1 second at 1/2 speed in reverse (-50) then stop
-  await hub.sleep(1000); // Do nothing for 1 second
 };
 
 scan();

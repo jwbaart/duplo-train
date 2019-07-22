@@ -15,7 +15,8 @@ var __importStar =
   };
 // Object.defineProperty(exports, "__esModule", { value: true });
 const boostmovehub_1 = require("node-poweredup/dist/node/boostmovehub");
-const Consts = __importStar(require("node-poweredup/dist/node/consts"));
+// const Consts = __importStar(require("node-poweredup/dist/node/consts"));
+const Consts = require("node-poweredup/dist/node/consts");
 const duplotrainbase_1 = require("node-poweredup/dist/node/duplotrainbase");
 const hub_1 = require("node-poweredup/dist/node/hub");
 const poweredup_browser_1 = require("node-poweredup/dist/node/poweredup-browser");
@@ -35,3 +36,4 @@ export const PoweredUPBrowser = {
   Consts,
   isWebBluetooth: utils_1.isWebBluetooth
 };
+

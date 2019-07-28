@@ -1,3 +1,4 @@
+import Vue from 'vue'
 // "use strict";
 // Copy of node-poweredup/dist/node/index-browser
 // it previously exported everything to window.PoweredUP, refactored to export PoweredUPBrowser
@@ -25,7 +26,7 @@ const pupremote1 = require('node-poweredup/dist/node/pupremote')
 const wedo2smarthub1 = require('node-poweredup/dist/node/wedo2smarthub')
 const utils1 = require('node-poweredup/dist/node/utils')
 // @ts-ignore
-export const PoweredUPBrowser = {
+const PoweredUPBrowser = {
   PoweredUP: poweredupBrowser1.PoweredUP,
   Hub: hub1.Hub,
   WeDo2SmartHub: wedo2smarthub1.WeDo2SmartHub,
@@ -36,3 +37,7 @@ export const PoweredUPBrowser = {
   Consts,
   isWebBluetooth: utils1.isWebBluetooth
 }
+const pup = new PoweredUPBrowser.PoweredUP()
+
+Vue.prototype.$poweredUp = PoweredUPBrowser
+Vue.prototype.$pup = pup

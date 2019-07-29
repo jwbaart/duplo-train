@@ -6,12 +6,15 @@
 export default {
   methods: {
     searchForTrain(poweredUp) {
-      if (this.$poweredUp.isWebBluetooth) {
-        console.log(`start scanning`)
+      if (!this.$poweredUp.isWebBluetooth) {
         this.$pup.scan() // Start scanning for hubs
       } else {
-        console.warn(
-          'Your browser does not support the Web Bluetooth specification.'
+        this.$bvToast.toast(
+          'Your browser does not support the Web Bluetooth specification.',
+          {
+            title: 'Warning',
+            variant: 'warning'
+          }
         )
       }
     }

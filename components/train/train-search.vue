@@ -6,7 +6,7 @@
 export default {
   methods: {
     searchForTrain(poweredUp) {
-      if (!this.$poweredUp.isWebBluetooth) {
+      if (this.$poweredUp.isWebBluetooth) {
         this.$pup.scan() // Start scanning for hubs
       } else {
         this.$bvToast.toast(

@@ -40,7 +40,8 @@ export default {
    */
   modules: [
     // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt'
+    'bootstrap-vue/nuxt',
+    ['@nuxtjs/google-analytics', { ua: '135688161-2' }]
   ],
   /*
    ** Build configuration

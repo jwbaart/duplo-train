@@ -1,3 +1,5 @@
+import colors from 'vuetify/es5/util/colors'
+
 export default {
   mode: 'universal',
   /*
@@ -33,16 +35,34 @@ export default {
    */
   devModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module'
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
   ],
   /*
    ** Nuxt.js modules
    */
-  modules: [
-    // Doc: https://bootstrap-vue.js.org/docs/
-    'bootstrap-vue/nuxt',
-    ['@nuxtjs/google-analytics', { ua: '135688161-2' }]
-  ],
+  modules: [['@nuxtjs/google-analytics', { ua: '135688161-2' }]],
+  /*
+   ** vuetify module configuration
+   ** https://github.com/nuxt-community/vuetify-module
+   */
+  vuetify: {
+    customVariables: ['~/assets/variables.scss'],
+    theme: {
+      dark: false,
+      themes: {
+        dark: {
+          primary: colors.blue.darken2,
+          accent: colors.grey.darken3,
+          secondary: colors.amber.darken3,
+          info: colors.teal.lighten1,
+          warning: colors.amber.base,
+          error: colors.deepOrange.accent4,
+          success: colors.green.accent3
+        }
+      }
+    }
+  },
   /*
    ** Build configuration
    */

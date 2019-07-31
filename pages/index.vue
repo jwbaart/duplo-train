@@ -1,28 +1,25 @@
 <template>
-  <b-container>
-    <Header />
-    <b-row>
-      <b-col>
+  <v-container>
+    <v-layout>
+      <v-flex>
         <TrainSearch />
         <TrainList />
         <TrainCommander />
-      </b-col>
-    </b-row>
-  </b-container>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
 import TrainSearch from '../components/train/train-search'
 import TrainList from '../components/train/train-list'
 import TrainCommander from '../components/train/train-commander'
-import Header from '../components/header'
 
 export default {
   components: {
     TrainSearch,
     TrainList,
-    TrainCommander,
-    Header
+    TrainCommander
   }
 }
 </script>

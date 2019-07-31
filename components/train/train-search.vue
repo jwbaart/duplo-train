@@ -1,5 +1,5 @@
 <template>
-  <b-button variant="primary" @click="searchForTrain">Search train</b-button>
+  <v-btn color="primary" @click="searchForTrain">Search train</v-btn>
 </template>
 
 <script>

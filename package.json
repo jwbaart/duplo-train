@@ -12,6 +12,9 @@
     "start": "nuxt start",
     "generate": "nuxt generate"
   },
+  "engines": {
+    "node": ">=10.0.0"
+  },
   "lint-staged": {
     "*.{js,vue}": "yarn lint"
   },

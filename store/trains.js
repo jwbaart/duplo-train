@@ -9,7 +9,9 @@ export const mutations = {
     state.list.push(train)
   },
   setLoading(state, loading) {
+    console.log('loading', state.loading)
     state.loading = loading
+    console.log('to', state.loading)
   },
   setActiveTrain(state, train) {
     state.activeTrain = { ...train }
@@ -35,5 +37,6 @@ export const actions = {
 }
 
 export const getters = {
-  activeTrain: (state) => state.activeTrain
+  activeTrain: (state) => state.activeTrain,
+  isLoading: (state) => state.loading
 }

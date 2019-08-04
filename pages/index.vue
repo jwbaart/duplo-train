@@ -2,6 +2,9 @@
   <v-container>
     <v-layout>
       <v-flex>
+        <v-overlay :value="isLoading">
+          <v-progress-circular indeterminate size="64"></v-progress-circular>
+        </v-overlay>
         <TrainSearch />
         <TrainList />
         <TrainConductor />
@@ -11,6 +14,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
 import TrainSearch from '../components/train/train-search'
 import TrainList from '../components/train/train-list'
 import TrainConductor from '../components/train/train-conductor'
@@ -20,6 +24,11 @@ export default {
     TrainSearch,
     TrainList,
     TrainConductor
+  },
+  computed: {
+    ...mapGetters({
+      isLoading: 'trains/isLoading'
+    })
   }
 }
 </script>

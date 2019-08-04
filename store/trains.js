@@ -37,6 +37,7 @@ export const actions = {
 }
 
 export const getters = {
+  trains: (state) => state.list,
   activeTrain: (state) => state.activeTrain,
   isLoading: (state) => state.loading
 }

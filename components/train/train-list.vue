@@ -12,7 +12,8 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState({
-      trains: (state) => state.trains.list
+      trains: (state) => state.trains.list,
+      loading: (state) => state.trains.loading
     })
   }
 }

@@ -5,10 +5,9 @@
 <script>
 export default {
   methods: {
-    searchForTrain(poweredUp) {
+    searchForTrain() {
       if (this.$poweredUp.isWebBluetooth) {
-        this.$pup.scan() // Start scanning for hubs
-        this.discoverTrain()
+        this.$store.dispatch('trains/searchTrain')
       } else {
         this.$bvToast.toast(
           'Your browser does not support the Web Bluetooth specification.',
@@ -18,11 +17,6 @@ export default {
           }
         )
       }
-    },
-    discoverTrain() {
-      this.$pup.on('discover', async (train) => {
-        await this.$store.commit('trains/add', train)
-      })
     }
   }
 }

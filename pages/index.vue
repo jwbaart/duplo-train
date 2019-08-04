@@ -4,7 +4,7 @@
       <v-flex>
         <TrainSearch />
         <TrainList />
-        <TrainCommander />
+        <TrainConductor />
       </v-flex>
     </v-layout>
   </v-container>
@@ -13,13 +13,13 @@
 <script>
 import TrainSearch from '../components/train/train-search'
 import TrainList from '../components/train/train-list'
-import TrainCommander from '../components/train/train-commander'
+import TrainConductor from '../components/train/train-conductor'
 
 export default {
   components: {
     TrainSearch,
     TrainList,
-    TrainCommander
+    TrainConductor
   }
 }
 </script>

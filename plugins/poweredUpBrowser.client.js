@@ -1,4 +1,4 @@
-import Vue from 'vue'
+// import Vue from 'vue'
 // "use strict";
 // Copy of node-poweredup/dist/node/index-browser
 // it previously exported everything to window.PoweredUP, refactored to export PoweredUPBrowser
@@ -39,5 +39,7 @@ const PoweredUPBrowser = {
 }
 const pup = new PoweredUPBrowser.PoweredUP()
 
-Vue.prototype.$poweredUp = PoweredUPBrowser
-Vue.prototype.$pup = pup
+export default ({ app }, inject) => {
+  inject('poweredUp', PoweredUPBrowser)
+  inject('pup', pup)
+}

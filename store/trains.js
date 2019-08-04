@@ -9,9 +9,7 @@ export const mutations = {
     state.list.push(train)
   },
   setLoading(state, loading) {
-    console.log('loading', state.loading)
     state.loading = loading
-    console.log('to', state.loading)
   },
   setActiveTrain(state, train) {
     state.activeTrain = { ...train }

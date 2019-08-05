@@ -1,10 +1,10 @@
 <template>
   <section class="train-list">
-    <ul class="train-list">
-      <li v-for="train in trains" :key="train.name">
+    <v-list class="train-list">
+      <v-list-item v-for="train in trains" :key="train.name">
         <p>{{ train.name }}</p>
-      </li>
-    </ul>
+      </v-list-item>
+    </v-list>
   </section>
 </template>
 

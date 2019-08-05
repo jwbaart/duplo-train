@@ -7,6 +7,10 @@
         </v-overlay>
         <TrainSearch />
         <TrainList />
+      </v-flex>
+    </v-layout>
+    <v-layout>
+      <v-flex xs12 md6>
         <TrainConductor />
       </v-flex>
     </v-layout>

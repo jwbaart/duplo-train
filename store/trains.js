@@ -22,17 +22,31 @@ export const mutations = {
 export const actions = {
   async addTrain({ commit }, train) {
     commit('setLoading', true)
-    // TODO Creates error state mutation outside of mutations
-    await train.connect()
+    try {
+      // TODO Creates error state mutation outside of mutations
+      await train.connect()
+    } catch {
+      return false
+    }
     commit('add', train)
     commit('setActiveTrain', train)
     commit('setLoading', false)
+    return true
   },
   async searchTrain({ commit }) {
     commit('setLoading', true)
+    // Returns undefined
+    // const scanResult = await this.$pup.scan()
     await this.$pup.scan()
-    await this.$pup.on('discover', async (train) => {
-      await this.dispatch('trains/addTrain', train)
+    return new Promise((resolve, reject) => {
+      this.$pup.on('discover', async (train) => {
+        console.log('train discovered')
+        const trainsAddTrainResult = await this.dispatch(
+          'trains/addTrain',
+          train
+        )
+        trainsAddTrainResult ? resolve() : reject(new Error('No train found'))
+      })
     })
   }
 }

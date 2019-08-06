@@ -5,9 +5,9 @@
 <script>
 export default {
   methods: {
-    searchForTrain() {
+    async searchForTrain() {
       if (this.$poweredUp.isWebBluetooth) {
-        this.$store.dispatch('trains/searchTrain')
+        await this.$store.dispatch('trains/searchTrain')
       } else {
         this.$bvToast.toast(
           'Your browser does not support the Web Bluetooth specification.',

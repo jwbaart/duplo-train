@@ -1,8 +1,5 @@
-const clonedeep = require('lodash.clonedeep')
-
 export const state = () => ({
   list: [],
-  activeTrain: null,
   loading: false
 })
 
@@ -12,10 +9,6 @@ export const mutations = {
   },
   setLoading(state, loading) {
     state.loading = loading
-  },
-  setActiveTrain(state, train) {
-    console.log('activeTrain', train)
-    state.activeTrain = clonedeep(train)
   }
 }
 
@@ -29,7 +22,6 @@ export const actions = {
       return false
     }
     commit('add', train)
-    commit('setActiveTrain', train)
     commit('setLoading', false)
     return true
   },
@@ -53,6 +45,5 @@ export const actions = {
 
 export const getters = {
   trains: (state) => state.list,
-  activeTrain: (state) => state.activeTrain,
   isLoading: (state) => state.loading
 }

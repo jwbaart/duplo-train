@@ -1,9 +1,9 @@
 <template>
-  <section v-if="!!activeTrain">
+  <section v-if="!!train">
     <v-card>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>{{ activeTrain.name }}</v-list-item-title>
+          <v-list-item-title>{{ train.name }}</v-list-item-title>
         </v-list-item-content>
         <v-list-item-avatar tile size="80">
           <v-icon>mdi-battery{{ getBatteryPercentage() }}-bluetooth</v-icon>
@@ -28,41 +28,35 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-
 export default {
-  computed: {
-    ...mapGetters({
-      activeTrain: 'trains/activeTrain'
-    })
+  props: {
+    train: {
+      type: Object,
+      default: () => {}
+    }
   },
   methods: {
     moveBackwards() {
-      const activeTrain = this.$store.getters['trains/activeTrain']
-      activeTrain.setMotorSpeed('MOTOR', -100)
+      this.train.setMotorSpeed('MOTOR', -100)
     },
     brake() {
-      const activeTrain = this.$store.getters['trains/activeTrain']
-      activeTrain.brakeMotor('MOTOR')
+      this.train.brakeMotor('MOTOR')
     },
     soundHorn() {
-      const activeTrain = this.$store.getters['trains/activeTrain']
-      activeTrain.playSound(this.$poweredUp.Consts.DuploTrainBaseSound.HORN)
+      this.train.playSound(this.$poweredUp.Consts.DuploTrainBaseSound.HORN)
     },
     moveForwards() {
-      const activeTrain = this.$store.getters['trains/activeTrain']
-      activeTrain.setMotorSpeed('MOTOR', 100)
+      this.train.setMotorSpeed('MOTOR', 100)
     },
     getBatteryPercentage() {
       // Move to component with color logic
-      const activeTrain = this.$store.getters['trains/activeTrain']
-      switch (activeTrain._batteryLevel) {
+      switch (this.train._batteryLevel) {
         case 100:
           return ''
         case 0:
           return '-alert'
         default:
-          return '-' + activeTrain._batteryLevel
+          return '-' + this.train._batteryLevel
       }
     }
   }

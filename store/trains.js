@@ -14,6 +14,7 @@ export const mutations = {
     state.loading = loading
   },
   setActiveTrain(state, train) {
+    console.log('activeTrain', train)
     state.activeTrain = clonedeep(train)
   }
 }
@@ -23,10 +24,6 @@ export const actions = {
     commit('setLoading', true)
     // TODO Creates error state mutation outside of mutations
     await train.connect()
-    await train
-      .playSound(train, this.$poweredUp.Consts.DuploTrainBaseSound.HORN)
-      .then((result) => console.log('result', result))
-      .catch((error) => console.log('error', error))
     commit('add', train)
     commit('setActiveTrain', train)
     commit('setLoading', false)

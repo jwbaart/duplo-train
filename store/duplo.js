@@ -1,11 +1,11 @@
 export const state = () => ({
-  list: [],
+  trains: [],
   loading: false
 })
 
 export const mutations = {
   add(state, train) {
-    state.list.push(train)
+    state.trains.push(train)
   },
   setLoading(state, loading) {
     state.loading = loading
@@ -44,6 +44,6 @@ export const actions = {
 }
 
 export const getters = {
-  trains: (state) => state.list,
+  trains: (state) => state.trains,
   isLoading: (state) => state.loading
 }

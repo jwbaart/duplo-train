@@ -10,8 +10,8 @@
       </v-flex>
     </v-layout>
 
-    <v-layout>
-      <v-flex v-for="train in trains" :key="train.name" xs12 md6>
+    <v-layout wrap>
+      <v-flex v-for="train in trains" :key="train.name" xs12 sm6 md4>
         <TrainConductor :train="train" />
       </v-flex>
     </v-layout>

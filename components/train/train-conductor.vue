@@ -1,13 +1,28 @@
 <template>
-  <section v-if="!!train">
+  <section v-if="!!train" class="train-conductor">
     <v-card>
+      <v-toolbar flat dense>
+        <v-toolbar-title>
+          <span class="subheading">{{ train.name }}</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon>
+          <v-icon
+            >mdi-battery{{ getBatteryPercentageIconName() }}-bluetooth</v-icon
+          >
+        </v-btn>
+      </v-toolbar>
       <v-list-item>
-        <v-list-item-content>
-          <v-list-item-title>{{ train.name }}</v-list-item-title>
-        </v-list-item-content>
-        <v-list-item-avatar tile size="80">
-          <v-icon>mdi-battery{{ getBatteryPercentage() }}-bluetooth</v-icon>
-        </v-list-item-avatar>
+        <v-slider
+          v-model="speed"
+          :tick-labels="speedTicks"
+          ticks="always"
+          tick-size="5"
+          min="-2"
+          max="2"
+          vertical
+          @change="onSliderSpeedChange($event)"
+        ></v-slider>
       </v-list-item>
       <v-card-actions>
         <v-btn outlined title="Backwards" @click="moveBackwards()">
@@ -35,11 +50,21 @@ export default {
       default: () => {}
     }
   },
+  data: () => ({
+    speedTicks: ['--', '-', '0', '+', '++'],
+    speed: 0
+  }),
+  mounted() {
+    this.train.on('speed', (port, speed) => {
+      this.speed = this.getTickedSpeed(speed)
+    })
+  },
   methods: {
     moveBackwards() {
       this.train.setMotorSpeed('MOTOR', -100)
     },
     brake() {
+      this.train.playSound(this.$poweredUp.Consts.DuploTrainBaseSound.BRAKE)
       this.train.brakeMotor('MOTOR')
     },
     soundHorn() {
@@ -48,7 +73,7 @@ export default {
     moveForwards() {
       this.train.setMotorSpeed('MOTOR', 100)
     },
-    getBatteryPercentage() {
+    getBatteryPercentageIconName() {
       // Move to component with color logic
       switch (this.train._batteryLevel) {
         case 100:
@@ -58,7 +83,19 @@ export default {
         default:
           return '-' + this.train._batteryLevel
       }
+    },
+    getTickedSpeed(speed) {
+      return Math.round(speed / 50) * 50
+    },
+    onSliderSpeedChange(speed) {
+      this.train.setMotorSpeed('MOTOR', this.getTickedSpeed(speed * 50))
     }
   }
 }
 </script>
+
+<style>
+.train-conductor {
+  margin-top: 1rem;
+}
+</style>

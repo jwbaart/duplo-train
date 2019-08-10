@@ -1,7 +1,22 @@
 <template>
-  <section class="train-search">
-    <v-btn color="primary" @click="searchForTrain">Search train</v-btn>
-    <v-btn color="secondary" @click="addDummytrain">Add dummy train</v-btn>
+  <section column class="train-search">
+    <v-tooltip top left class="train-conductor__battery-tooltip">
+      <template v-slot:activator="{ on }">
+        <v-btn fab color="secondary" v-on="on" @click="addDummytrain">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </template>
+      <span>Add a dummy train</span>
+    </v-tooltip>
+
+    <v-tooltip top left class="train-conductor__battery-tooltip">
+      <template v-slot:activator="{ on }">
+        <v-btn fab color="primary" v-on="on" @click="searchForTrain">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </template>
+      <span>Add train</span>
+    </v-tooltip>
   </section>
 </template>
 
@@ -27,3 +42,12 @@ export default {
   }
 }
 </script>
+
+<style>
+.train-search {
+  position: fixed;
+  bottom: 3rem;
+  right: 1rem;
+  text-align: center;
+}
+</style>

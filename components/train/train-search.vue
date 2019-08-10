@@ -7,7 +7,7 @@ export default {
   methods: {
     async searchForTrain() {
       if (this.$poweredUp.isWebBluetooth) {
-        await this.$store.dispatch('trains/searchTrain')
+        await this.$store.dispatch('duplo/searchTrain')
       } else {
         this.$bvToast.toast(
           'Your browser does not support the Web Bluetooth specification.',

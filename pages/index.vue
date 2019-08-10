@@ -30,8 +30,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      isLoading: 'trains/isLoading',
-      trains: 'trains/trains'
+      isLoading: 'duplo/isLoading',
+      trains: 'duplo/trains'
     })
   }
 }

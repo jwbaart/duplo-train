@@ -34,7 +34,7 @@ export const actions = {
       this.$pup.on('discover', async (train) => {
         console.log('train discovered')
         const trainsAddTrainResult = await this.dispatch(
-          'trains/addTrain',
+          'duplo/addTrain',
           train
         )
         trainsAddTrainResult ? resolve() : reject(new Error('No train found'))

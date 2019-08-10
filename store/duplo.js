@@ -55,8 +55,10 @@ export const actions = {
     })
   },
   async removeTrain({ commit }, { train }) {
+    commit('setLoading', true)
     await train.disconnect()
     commit('remove', train)
+    commit('setLoading', false)
   }
 }
 

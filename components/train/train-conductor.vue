@@ -2,18 +2,28 @@
   <section v-if="!!train" class="train-conductor">
     <v-card>
       <v-toolbar flat dense>
-        <v-btn icon>
-          <v-icon
-            >mdi-battery{{ getBatteryPercentageIconName() }}-bluetooth</v-icon
-          >
-        </v-btn>
+        <v-tooltip bottom left class="train-conductor__battery-tooltip">
+          <template v-slot:activator="{ on }">
+            <v-icon v-on="on"
+              >mdi-battery{{ getBatteryPercentageIconName() }}-bluetooth</v-icon
+            >
+          </template>
+          <span>{{ train._batteryLevel }}%</span>
+        </v-tooltip>
+
         <v-toolbar-title>
           <span class="subheading">{{ train.name }}</span>
         </v-toolbar-title>
         <v-spacer></v-spacer>
-        <v-btn icon @click="removeTrain">
-          <v-icon>mdi-close</v-icon>
-        </v-btn>
+
+        <v-tooltip bottom left class="train-conductor__remove">
+          <template v-slot:activator="{ on }">
+            <v-btn icon v-on="on" @click="removeTrain">
+              <v-icon>mdi-close</v-icon>
+            </v-btn>
+          </template>
+          <span>Remove train</span>
+        </v-tooltip>
       </v-toolbar>
       <v-list-item>
         <v-slider
@@ -106,5 +116,9 @@ export default {
 <style>
 .train-conductor {
   margin-top: 1rem;
+}
+
+.train-conductor__battery-tooltip {
+  margin-right: 0.5rem;
 }
 </style>

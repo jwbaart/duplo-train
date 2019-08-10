@@ -2,14 +2,17 @@
   <section v-if="!!train" class="train-conductor">
     <v-card>
       <v-toolbar flat dense>
-        <v-toolbar-title>
-          <span class="subheading">{{ train.name }}</span>
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon
             >mdi-battery{{ getBatteryPercentageIconName() }}-bluetooth</v-icon
           >
+        </v-btn>
+        <v-toolbar-title>
+          <span class="subheading">{{ train.name }}</span>
+        </v-toolbar-title>
+        <v-spacer></v-spacer>
+        <v-btn icon @click="removeTrain">
+          <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-toolbar>
       <v-list-item>
@@ -43,6 +46,8 @@
 </template>
 
 <script>
+import { roundToTens } from '../../utils/numbers'
+
 export default {
   props: {
     train: {
@@ -74,15 +79,19 @@ export default {
       this.train.setMotorSpeed('MOTOR', 100)
     },
     getBatteryPercentageIconName() {
+      const batteryLevel = roundToTens(this.train._batteryLevel)
       // Move to component with color logic
-      switch (this.train._batteryLevel) {
+      switch (batteryLevel) {
         case 100:
           return ''
         case 0:
           return '-alert'
         default:
-          return '-' + this.train._batteryLevel
+          return '-' + batteryLevel
       }
+    },
+    removeTrain() {
+      this.$store.dispatch('duplo/removeTrain', { train: this.train })
     },
     getTickedSpeed(speed) {
       return Math.round(speed / 50) * 50

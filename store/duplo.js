@@ -1,3 +1,5 @@
+import { createDummyTrain } from '../utils/trains'
+
 export const state = () => ({
   trains: [],
   loading: false
@@ -9,6 +11,12 @@ export const mutations = {
   },
   setLoading(state, loading) {
     state.loading = loading
+  },
+  remove(state, train) {
+    const trainIndex = state.trains.indexOf(train)
+    if (trainIndex > -1) {
+      state.trains.splice(trainIndex, 1)
+    }
   }
 }
 
@@ -26,13 +34,8 @@ export const actions = {
     return true
   },
   addDummyTrain({ commit }) {
-    const train = {
-      on: (input) => input,
-      name: 'Dummy Train',
-      playSound: (input) => input,
-      setMotorSpeed: (input) => input,
-      brakeMotor: (input) => input
-    }
+    const train = createDummyTrain()
+    console.log('train', train)
     commit('add', train)
   },
   async searchTrain({ commit }) {
@@ -50,6 +53,10 @@ export const actions = {
         trainsAddTrainResult ? resolve() : reject(new Error('No train found'))
       })
     })
+  },
+  async removeTrain({ commit }, { train }) {
+    await train.disconnect()
+    commit('remove', train)
   }
 }
 

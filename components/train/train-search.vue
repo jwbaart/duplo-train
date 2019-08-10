@@ -1,5 +1,8 @@
 <template>
-  <v-btn color="primary" @click="searchForTrain">Search train</v-btn>
+  <section class="train-search">
+    <v-btn color="primary" @click="searchForTrain">Search train</v-btn>
+    <v-btn color="secondary" @click="addDummytrain">Add dummy train</v-btn>
+  </section>
 </template>
 
 <script>
@@ -17,6 +20,9 @@ export default {
           }
         )
       }
+    },
+    addDummytrain() {
+      this.$store.dispatch('duplo/addDummyTrain')
     }
   }
 }

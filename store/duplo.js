@@ -25,6 +25,16 @@ export const actions = {
     commit('setLoading', false)
     return true
   },
+  addDummyTrain({ commit }) {
+    const train = {
+      on: (input) => input,
+      name: 'Dummy Train',
+      playSound: (input) => input,
+      setMotorSpeed: (input) => input,
+      brakeMotor: (input) => input
+    }
+    commit('add', train)
+  },
   async searchTrain({ commit }) {
     commit('setLoading', true)
     // Returns undefined

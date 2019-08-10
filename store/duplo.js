@@ -32,7 +32,7 @@ export const actions = {
     await this.$pup.scan()
     return new Promise((resolve, reject) => {
       this.$pup.on('discover', async (train) => {
-        console.log('train discovered')
+        console.log('train discovered', train)
         const trainsAddTrainResult = await this.dispatch(
           'duplo/addTrain',
           train

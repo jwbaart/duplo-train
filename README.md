@@ -1,6 +1,6 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/73b588cf-0cb4-4e2c-9eaa-8cb431f71823/deploy-status)](https://app.netlify.com/sites/duplo-train/deploys)
 # duplo-train
-
-> My sensational Nuxt.js project
+A webapp to control my sons Duplo train. Built with Nuxt.Js, Vuex and Vuetify.
 
 ## Build Setup
 
@@ -11,12 +11,6 @@ $ yarn install
 # serve with hot reload at localhost:3000
 $ yarn dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
-
 # generate static project
 $ yarn generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

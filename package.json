@@ -1,7 +1,7 @@
 {
   "name": "duplo-train",
   "version": "1.0.0",
-  "description": "My sensational Nuxt.js project",
+  "description": "Control Duplo trains",
   "author": "Jan-Willem Baart",
   "private": true,
   "scripts": {

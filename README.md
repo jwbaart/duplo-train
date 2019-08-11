@@ -3,6 +3,8 @@
 A webapp to control my sons Duplo train. Built with Nuxt.Js, Vuex and Vuetify.
 Lives on [duplo-train.jwbaart.dev](duplo-train.jwbaart.dev). Use grey + button to add a dummy train for demo purposes.
 
+Developed with a [Duplo Train Base 10875](https://brickset.com/sets/10875-1/)
+
 ## Build Setup
 
 ``` bash
